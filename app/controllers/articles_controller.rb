@@ -38,10 +38,12 @@ class ArticlesController < ApplicationController
 
 	def comment_post
 		@comments = Comment.is_comment(current_user)
+		@comment = Comment.new
 	end
 
 	def like_post
 		@like_post = Like.like_art(current_user)
+		@comment = Comment.new
 	end
 
 	def new 

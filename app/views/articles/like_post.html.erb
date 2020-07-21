@@ -1,6 +1,6 @@
 <% if @like_post.any? %>
 	<% @like_post.each do |like| %> 
-		<%= render 'shared/article_filter', obj: like %>
+		<%= render 'shared/article_filter', obj: like.article %>
 	<% end %>
 <% else %>
 	<div class="alert alert-warning" role="alert">
