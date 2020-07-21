@@ -1,0 +1,48 @@
+
+<div class="container">
+	<div class="row d-flex justify-content-center">
+		<div class="col-md-6">
+		<div class=" my-2 card mr-4">
+				<%= image_tag @article.image_url , height: '600', width: '600', class: "card-img-top mt-3" %>
+			<div class="d-flex justify-content-between my-3 mx-2">
+				<% if logged_in? %>
+					<div id="like-icon-article-<%= @article.id.to_s %>" >
+						<%= render 'likes/like', article: @article, current_user: current_user %>
+					</div>
+				 <% if logged_in? and (current_user.id == @article.user.id) %>
+				   <%= link_to edit_article_path(@article) do %>
+		   			<i>
+		   				<%= image_tag 'edit.png', height: '30', width: '30' ,class: "link_to" %> </i>
+		   			<% end %>
+		   			<%= link_to  article_path(@article), method: :delete ,class: "link_to" do %>
+					<i class="fa fa-trash fa-2x" aria-hidden="true"></i>
+					<% end %>
+				<% end %>
+			<% end %>
+			</div>
+			<div class="card-body">
+				<p class="my-4 card-title d-flex justify-content-between"><strong> 	<%= @article.title %> </strong> <span class="badge badge-pill badge-primary text-white">	<%= @article.category.name %> </span> </p> 
+				<p  class=" text-muted card-text"><%= @article.description %> </p>
+			</div>
+		</div>
+	</div>
+		<div class="col-6 d mt-5">
+			<ul class="list-group">
+			  <li class="list-group-item">Comments </li>
+			<% @article.comments.each do |comment| %>
+    		<li  class="list-group-item list-group-item-success mt-2"><%= comment.comment  %>  </li>
+			</ul>
+			<% end %>
+				<%= form_for(@comment , :html => {:id=>'form_id'}) do |f| %>
+			<div class="my-auto d-flex align-items-center">
+				<%= f.hidden_field :article_id , value: @article.id %>
+				<%= f.text_field :comment, placeholder: "Comment", class:"form-control mt-3 " %>
+					<%= link_to "", :onclick => "$('#form_id').submit()", class: "link_to" do %>
+			    <i class="fa fa-paper-plane fa-2x mx-3 mt-3">  </i>  		
+			    <% end %>
+			</div>
+			<% end %> 
+		</div>
+	</div>
+</div>
+

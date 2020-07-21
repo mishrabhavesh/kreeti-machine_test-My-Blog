@@ -5,8 +5,7 @@ def create
 	@like = current_user.likes.build(like_params)
 	@article = @like.article
 	if(@like.save)
-	flash[:notice]= "LIKE"
-	respond_to :js
+		respond_to :js
 	else
 		flash[:alert] = "Sommething went wrong"
 	end
@@ -17,7 +16,6 @@ def destroy
 	@article = @like.article
 	@current_user = current_user
 	if(@like.destroy)
-		flash[:notice]= "DIS-LIKE"
 		respond_to :js
 	else
 		flash[:alert] = "Sommething went wrong"
