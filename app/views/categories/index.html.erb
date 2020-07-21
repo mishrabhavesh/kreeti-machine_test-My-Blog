@@ -1,0 +1,19 @@
+
+<%= render 'form', category: @category %>
+
+<table class="table mt-4">
+  <thead class="thead-dark text-center">
+    <tr>
+      <th>Category name</th>
+      <th>Edit</th>
+    </tr>
+  </thead>
+  <tbody class="text-center">
+  <% Category.all.each do |category| %>
+    <tr>
+      <td><%= category.name  %></td>
+      <td><%= link_to 'Edit', edit_category_path(category), class: 'btn btn-warning '  %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

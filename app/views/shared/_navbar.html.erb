@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <%= link_to "My Blog", root_path,class: "navbar-brand" %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ">
+      <% if logged_in? and current_user.role.role == "ADMIN" %>
+      <li class="nav-item mx-2">
+       <%= link_to "Create new category", categories_path, class: "nav- btn btn-outline-danger"  %>  
+      </li>
+      <% end %>
+      <% if logged_in? %>
+      <li class="nav-item mx-2">
+        <%= link_to "Create new Article", new_article_path, class: "btn btn-outline-primary" %>
+      </li>
+      <% end %>
+      <li class="nav-item mx-2">
+        <%= link_to "Show all articles", articles_path, class: "btn btn-outline-dark" %>
+      </li>
+    </ul>
+       <div class=" d-flex mx-3">
+      <% if logged_in?%>
+          <%= link_to 'Logout',logout_path, class: 'nav-link btn btn-outline-danger rounded-pill',method: :delete %>
+        <% else %>
+          <%= link_to 'Sign up',signup_path, class: 'nav-link btn btn-primary rounded-pill mx-3' %>
+          <%= link_to 'Login',login_path, class: 'nav-link btn btn-light ' %>
+        <%end%>
+      </div> 
+  </div>
+</nav>

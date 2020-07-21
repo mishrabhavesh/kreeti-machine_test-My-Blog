@@ -1,0 +1,31 @@
+
+<div class="container">
+	<div class="row d-flex justify-content-center">
+		<% @articles.each do |article| %>
+		<div class="col-md-6  my-2 card mr-4">
+				<%= image_tag article.image_url , height: '600', width: '600', class: "card-img-top mt-3" %>
+			<div class="d-flex justify-content-between my-3 mx-2">
+				<% if logged_in? %>
+					<div id="like-icon-article-<%= article.id.to_s %>" >
+						<%= render 'likes/like', article: article, current_user: current_user %>
+					</div>
+					<i class="fa fa-comment fa-2x" aria-hidden="true"></i>
+				 <% if logged_in? and (current_user.id == article.user.id) %>
+				   <%= link_to edit_article_path(article) do %>
+		   			<i> <%= image_tag 'edit.png', height: '30', width: '30' %> </i>
+		   			<% end %>
+		   			<%= link_to  article_path(article), method: :delete  do %>
+					<i class="fa fa-trash fa-2x" aria-hidden="true"></i>
+					<% end %>
+				<% end %>
+			<% end %>
+			</div>
+			<div class="card-body">
+				<p class="my-4 card-title d-flex justify-content-between"><strong> 	<%= article.title %> </strong> <span class="badge badge-pill badge-primary text-white">	<%= article.category.name %> </span> </p> 
+				<p  class=" text-muted card-text"><%= article.description %> </p>
+			</div>
+		</div>
+		<% end %>
+	</div>
+</div>
+

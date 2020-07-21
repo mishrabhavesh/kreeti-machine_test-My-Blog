@@ -1,0 +1,16 @@
+@import "bootstrap/scss/bootstrap";
+@import "toastr/toastr";
+$fa-font-path: '@fortawesome/fontawesome-free/webfonts';
+@import '@fortawesome/fontawesome-free/scss/fontawesome';
+@import '@fortawesome/fontawesome-free/scss/solid';
+@import '@fortawesome/fontawesome-free/scss/regular';
+@import '@fortawesome/fontawesome-free/scss/brands';
+@import '@fortawesome/fontawesome-free/scss/v4-shims';
+
+
+.file {
+	margin-left: 20px;
+	margin-right: 20px;
+	position: absolute;
+	top: 58%;
+}

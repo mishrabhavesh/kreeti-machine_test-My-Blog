@@ -1,0 +1,18 @@
+<div class=" d-flex justify-content-center mt-5">
+	<div class="col-lg-4">
+	  <div class="card bg-info text-center card-form">
+	    <div class="card-body">
+	      <h3>New Category</h3>
+	    <%= form_for(category, local: true) do |f| %>
+	    <%= render 'shared/error', obj: category %> 
+	      <form>
+  		 	<div class="form-group">
+			<%= f.text_field :name , class:"form-control form-control-lg", id: "text" , placeholder:"Category" %>
+			</div>
+	      <%= f.submit class: "btn btn-outline-light btn-block" %>
+	      </form>
+	      <% end %>
+	    </div>
+	  </div>
+	</div>
+</div>

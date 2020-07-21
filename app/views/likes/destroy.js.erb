@@ -1,0 +1,5 @@
+
+
+$('#like-icon-article-<%= @article.id %>').html('<%= j render "likes/like", article: @article, current_user: @current_user %>');
+
+console.log("destroyed");

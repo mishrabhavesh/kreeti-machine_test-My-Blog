@@ -1,0 +1,10 @@
+
+// alert("hello");
+// document.getElementById("like-<%= @article.id %>").parentNode.removeChild(document.getElementById("like-<%= @article.id %>"))
+
+$('#like-icon-article-<%= @article.id %>').html('<%= j render "likes/like", article: @article, current_user: @current_user %>')
+// var newhtml
+// 	newhtml = html.replace(%article%,@article)
+// 	newhtml = newhtml.replace(%current_user%, current_user)
+// document.getElementById("like-icon-article<%= @article.id %>").insertAdjacentHTML('afterbegin',newhtml)
+console.log("created") 
