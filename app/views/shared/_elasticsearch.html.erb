@@ -1,0 +1,11 @@
+
+  <%= form_tag articles_path, method: :get do %>
+    <p>
+      <%= text_field_tag :search, params[:search], placeholder: "search", class: "form-control" %>
+      <%= button_tag "Search", name: nil, class: "btn btn-dark my-3 mr-auto" %>
+    </p>
+  <%end%>
+
+  <%= form_tag category_search_path, method: 'get' do %>
+    <%= select_tag "category_id", options_from_collection_for_select(Category.all, "id", "name",selected: params[:category_id]), onchange:  "this.form.submit();", prompt: "Search by Category", class: "custom-select" %>      
+<% end %>

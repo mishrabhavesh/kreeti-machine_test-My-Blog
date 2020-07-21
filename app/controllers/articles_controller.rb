@@ -4,8 +4,18 @@ class ArticlesController < ApplicationController
 
 
 	def index
+		if params[:search].present?
+			@articles = Article.search(params[:search])
+		else
 		@articles = Article.all.includes(:category,:likes,:comments).order('created_at desc')
+		end
 		@comment = Comment.new
+	end
+
+	def category_search
+		@articles = Article.where(category_id: params[:category_id])
+		@comment = Comment.new
+		
 	end
 
 	def show

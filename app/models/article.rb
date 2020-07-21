@@ -1,4 +1,5 @@
 class Article < ApplicationRecord
+	searchkick
 	  mount_uploader :image, ArticleImageUploader
 	  validates :title, presence: true
 	  validates :description, presence: true
@@ -11,5 +12,12 @@ class Article < ApplicationRecord
 	  	Like.where(user_id: user.id, article_id: id)
 	  end
 
-	  
+  def search_data
+    {
+      title: title,
+      description: description,
+      category: category.name
+    }
+  end
+
 end

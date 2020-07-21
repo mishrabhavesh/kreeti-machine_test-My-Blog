@@ -16,5 +16,6 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   get '/like_post', to: 'articles#like_post'
   get '/comment_post', to: 'articles#comment_post'
+  get 'category_search', to: 'articles#category_search'
 
 end

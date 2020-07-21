@@ -81,5 +81,14 @@ color: black
   }
   .show-article:hover {
   transform: translateY(3px);
+  }
 
+  .navbar-position {
+  position: fixed;
+  }
+
+  .content {
+  position: absolute;
+  top: 32%;
+  z-index: -1;
   }
