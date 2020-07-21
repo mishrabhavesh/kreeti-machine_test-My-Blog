@@ -2,8 +2,10 @@ Rails.application.routes.draw do
   get 'page/about'
   root to: 'pages#home'
   get 'about', to: 'pages#about'
+  resources :comments, only: [:create,:destroy]
   resources :articles do
     resources :likes, only: [:create,:destroy], shallow: true
+    resources :comments, only: [:create,:destroy], shallow: true
   end
   resources :categories
   resources :users, except: [:new,:show] 

@@ -4,7 +4,8 @@ class ArticlesController < ApplicationController
 
 
 	def index
-		@articles = Article.all.includes(:category,:likes).order('created_at desc')
+		@articles = Article.all.includes(:category,:likes,:comments).order('created_at desc')
+		@comment = Comment.new
 	end
 
 	def show
