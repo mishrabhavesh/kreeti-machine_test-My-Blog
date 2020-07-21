@@ -22,7 +22,7 @@
 			<% end %>
 			</div>
 			<div class="card-body">
-				<p class="my-4 card-title d-flex justify-content-between"><strong> 	<%= article.title %> </strong> <span class="badge badge-pill badge-primary text-white">	<%= article.category.name %> </span> </p> 
+				<p class="my-4 card-title d-flex justify-content-between"><strong> <%= link_to  article_path(article) ,class: "show-article btn-group" do %> <%= article.title %> <% end %> </strong> <span class="badge badge-pill badge-primary text-white">	<%= article.category.name %> </span> </p> 
 				<p  class=" text-muted card-text"><%= article.description %> </p>
 			</div>
 		</div>
