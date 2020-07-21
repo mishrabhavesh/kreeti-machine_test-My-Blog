@@ -26,6 +26,10 @@ class ArticlesController < ApplicationController
 
 	end
 
+	def comment_post
+		@comments = Comment.is_comment(current_user)
+	end
+
 	def like_post
 		@like_post = Like.like_art(current_user)
 	end

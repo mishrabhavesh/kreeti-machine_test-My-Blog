@@ -15,4 +15,6 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   get '/like_post', to: 'articles#like_post'
+  get '/comment_post', to: 'articles#comment_post'
+
 end

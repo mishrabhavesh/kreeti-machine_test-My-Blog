@@ -1,0 +1,17 @@
+<div class="container">
+	<div class=" d-flex justify-content-center align-items-center">
+		<div class="col-md-6  my-2 card mr-4">
+				<%= image_tag obj.article.image_url , height: '600', width: '600', class: "card-img-top mt-3" %>
+			<div class="card-body">
+							<strong> <%= pluralize("#{obj.article.likes.count}" , 'like' ) %> </strong>
+				<p class="my-4 card-title d-flex justify-content-between"><strong> 	<%= obj.article.title %> </strong> <span class="badge badge-pill badge-primary text-white">	<%= obj.article.category.name %> </span> </p> 
+				<p  class=" text-muted card-text"><%= obj.article.description %> </p>
+			</div>
+		</div>
+		<div class="col-md-6" >
+			<% obj.article.comments.each do |comment| %>
+				<li class="list-group-item list-group-item-info"> <%= comment.comment %> </li>
+			<% end %>
+		</div>
+	</div>
+</div>

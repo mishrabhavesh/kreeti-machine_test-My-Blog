@@ -1,18 +1,9 @@
-<% @like_post.each do |like| %> 
-
-<div class="container">
-	<div class="row d-flex justify-content-center">
-		<div class="col-md-6  my-2 card mr-4">
-				<%= image_tag like.article.image_url , height: '600', width: '600', class: "card-img-top mt-3" %>
-			<div class="card-body">
-							<strong> <%= pluralize("#{like.article.likes.count}" , 'like' ) %> </strong>
-				<p class="my-4 card-title d-flex justify-content-between"><strong> 	<%= like.article.title %> </strong> <span class="badge badge-pill badge-primary text-white">	<%= like.article.category.name %> </span> </p> 
-				<p  class=" text-muted card-text"><%= like.article.description %> </p>
-			</div>
-		</div>
+<% if @like_post.any? %>
+	<% @like_post.each do |like| %> 
+		<%= render 'shared/article_filter', obj: like %>
+	<% end %>
+<% else %>
+	<div class="alert alert-warning" role="alert">
+		<h3> You dont have any liked post </h3>
 	</div>
-</div>
-
-
-
 <% end %>

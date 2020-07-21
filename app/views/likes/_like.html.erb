@@ -1,12 +1,12 @@
 <% if  !article.is_liked(current_user).present? %>
-<span class="link_to">
+<span class="">
 <%= link_to article_likes_path(article), method: :post, remote: true do %>
 <i id="like-<%= article.id %>"> <%= image_tag 'heart-dislike.png', height: '30', width: '30', class: 'empty-heart link_to' %> </i>
 <% end %>
 <% else %>
-<%= link_to like_path(article.is_liked(current_user).last.id), method: :delete, remote: true , class: "link_to loved" do %>
-	<i class="fa fa-heart link_to fa-2x" aria-hidden="true"></i>
+<%= link_to like_path(article.is_liked(current_user).last.id), method: :delete, remote: true , class: " " do %>
+	<i class="fa fa-heart link_to fa-2x loved" aria-hidden="true"></i>
 <% end %>
 <% end %>
 </span>
-<strong class=" d-flex my-2 link_to align-items-center justify-content-center"> <%= pluralize("#{article.likes.count}" , 'like' ) %> </strong>
+<strong class=" d-flex my-2  align-items-center justify-content-center"> <%= pluralize("#{article.likes.count}" , 'like' ) %> </strong>

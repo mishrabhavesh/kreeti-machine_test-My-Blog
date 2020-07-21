@@ -22,10 +22,14 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
 .link_to:hover {
 transform: translateY(-3px);
 cursor: pointer;
-color: red
+color: black
 }
 .loved {
-	color: red !important;
+	color: red !important ;
+}
+.loved:hover {
+  transform: translateY(-3px);
+
 }
 
 
