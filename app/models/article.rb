@@ -3,6 +3,7 @@ class Article < ApplicationRecord
 	  mount_uploader :image, ArticleImageUploader
 	  validates :title, presence: true
 	  validates :description, presence: true
+  	  validates :image, presence: true
 	  belongs_to :category
 	  belongs_to :user
 	  has_many :likes, dependent: :destroy
@@ -18,6 +19,10 @@ class Article < ApplicationRecord
       description: description,
       category: category.name
     }
+  end
+
+  def self.generate_title_pdf user
+  	Article.where(user_id: user.id)
   end
 
 end

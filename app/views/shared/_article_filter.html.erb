@@ -30,13 +30,14 @@
 			  <li class="list-group-item">Comments </li>
 			<% obj.comments.each do |comment| %>
     		<li  class="list-group-item list-group-item-success mt-2 d-flex justify-content-between title"> <strong> <%= comment.comment %> </strong> 
-    			<% if current_user.id == comment.user.id %>
+    			<% if logged_in? and current_user.id == comment.user.id %>
 	    			<%= link_to comment_path(comment.id), method: :delete do %> <i class="fa fa-times link_to" aria-hidden="true"></i> 
 					<% end %>
     			<% end %> 
     		</li>
 			</ul>
 			<% end %>
+			<% if logged_in? %>
 				<%= form_for(@comment , :html => {:id=>'form_id'}) do |f| %>
 			<div class="my-auto d-flex align-items-center">
 				<%= f.hidden_field :article_id , value: obj.id %>
@@ -46,6 +47,11 @@
 			    <% end %>
 			</div>
 			<% end %> 
+		<% else %>
+			<div class="alert alert-warning mt-4" role="alert">
+				<h3> Login/Signup to post comments !!!! </h3>
+			</div>
+		<% end %>
 			<%= link_to "Back",  articles_path, class: "btn btn-dark my-5 " %>
 		</div>
 	</div>

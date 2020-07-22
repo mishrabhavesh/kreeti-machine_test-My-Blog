@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mb-4">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <%= link_to root_path,class: "navbar-brand" do %>
     <i class="fa fa-camera fa-3x" aria-hidden="true"></i>
@@ -23,6 +23,9 @@
         </li>
         <li class="nav-item mx-2">
           <%= link_to "Liked post",like_post_path , class: "btn btn-outline-danger" %>
+        </li>
+        <li class="nav-item mx-2">
+          <%= link_to "Download_pdf", download_pdf_path(format: 'pdf'), class: "btn btn-outline-warning" %>
         </li>
         <% end %>
         <li class="nav-item mx-2">

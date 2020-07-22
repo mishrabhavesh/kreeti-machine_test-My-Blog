@@ -1,23 +1,6 @@
 class ArticlesController < ApplicationController
 	before_action :find_params ,only: [:show,:edit,:destroy,:update]
-	before_action :require_login, except: [:index]
-
-
-      def download_pdf
-        @Article = Article.all
-        respond_to do |format|
-          format.pdf do
-            pdf = Prawn::Document.new
-            table_data = Array.new
-            table_data << ["Article title"]
-            @product.each do |p|
-                table_data << [p.p_title]
-            end
-            pdf.table(table_data, :width => 500, :cell_style => { :inline_format => true })
-            send_data pdf.render, filename: 'test.pdf', type: 'application/pdf', :disposition => 'inline'
-          end
-        end
-      end
+	before_action :require_login, except: [:index,:show]
 
 	def index
 		if params[:search].present?
@@ -91,9 +74,19 @@ class ArticlesController < ApplicationController
 		else
 			flash[:alert] = "Something went wrong"
 		end
-	redirect_to articles_path
-
+		redirect_to articles_path
 	end
+
+     def download_pdf
+    	@articles = Article.generate_title_pdf(current_user)
+      respond_to do |format|
+        format.pdf do
+          pdf = TitlePdf.new(@articles, current_user)
+         
+          send_data pdf.render, filename: 'test.pdf', type: 'application/pdf', :disposition => 'inline'
+        end
+      end
+      end
 
 	private 
 

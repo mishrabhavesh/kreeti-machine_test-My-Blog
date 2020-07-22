@@ -1,29 +1,29 @@
-<%= form_with(model: user, local: true) do |form| %>
-   <%= render 'shared/error', obj: @user %>
-  <div class="wrapper fadeInDown">
-  <div id="formContent">
-  <div class="fadeIn first ">
-    <h3 class="py-3 h2 text-dark card-header " >Sign up</h3>
-  </div>
 
-  <div class="field py-2 pl-5 fadeIn second d-flex flex flex-column " id="login">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
-  </div>
-
-  <div class="field py-2 pl-5 fadeIn third d-flex flex-column" id="password">
-    <%= form.label :password %>
-    <%= form.password_field :password %>
-  </div>
-  <% if !logged_in?%>
-  <div class="field py-2 fadeIn w-50 pl-5 d-flex  third">
-    <%= collection_select(:user, :role_id, Role.all, :id, :role,{prompt: 'Please select role'},  {class: 'form-control '}) %>
-  </div>
-  <%end%>
-
-  <div class="actions actions fadeIn fourth">
-    <%= form.submit  %>
-  </div>
+<div class="container">
+  <div class="row justify-content-center mt-4">
+    <div class="col-6">
+      <div class="card bg-primary text-center card-form">
+        <div class="card-body">
+          <h3>Sign Up Today</h3>
+          <p>please fill out this form</p>
+          <%= form_with(model: user, local: true) do |form| %>
+            <%= render 'shared/error', obj: @user %>
+          <form>
+            <div class="form-group">
+              <%= form.text_field :email, class: "form-control form-control-lg" ,placeholder: "Email" %>
+            </div>
+            <div class="form-group">
+              <%= form.password_field :password, class: "form-control form-control-lg", placeholder: "Password"%>
+            </div>
+            <div class="form-group">
+              <%= collection_select(:user, :role_id, Role.all, :id, :role,{prompt: 'Please select role'},  {class: 'form-control  '}) %>
+            </div>
+            <%= form.submit :"Sign Up" ,class: "btn btn-outline-light btn-block"  %>
+          </form>
+        <% end %>
+        </div>
+      </div>
+      <%= link_to 'Back', root_path, class: "btn btn-dark mt-4" %>
+    </div>
   </div>
 </div>
-<% end %>

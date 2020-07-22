@@ -1,9 +1,11 @@
 class CategoriesController < ApplicationController
 before_action :category_params, only: [:update,:create]
-before_action :require_admin
+before_action :require_login, only: [:index,:create,:edit,:update]
+before_action :require_admin, only: [:index,:create,:edit,:update]
+
 
 	def index
-		@categories = Category.all 
+		@categories = Category.all.order('created_at desc')
 		@category = Category.new
 	end
 
