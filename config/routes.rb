@@ -17,5 +17,5 @@ Rails.application.routes.draw do
   get '/like_post', to: 'articles#like_post'
   get '/comment_post', to: 'articles#comment_post'
   get 'category_search', to: 'articles#category_search'
-
+get "articles/download_pdf" => "articles#download_pdf", :as => 'download_pdf'
 end

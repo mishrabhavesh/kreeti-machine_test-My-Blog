@@ -3,6 +3,22 @@ class ArticlesController < ApplicationController
 	before_action :require_login, except: [:index]
 
 
+      def download_pdf
+        @Article = Article.all
+        respond_to do |format|
+          format.pdf do
+            pdf = Prawn::Document.new
+            table_data = Array.new
+            table_data << ["Article title"]
+            @product.each do |p|
+                table_data << [p.p_title]
+            end
+            pdf.table(table_data, :width => 500, :cell_style => { :inline_format => true })
+            send_data pdf.render, filename: 'test.pdf', type: 'application/pdf', :disposition => 'inline'
+          end
+        end
+      end
+
 	def index
 		if params[:search].present?
 			@articles = Article.search(params[:search])

@@ -4,7 +4,9 @@
 		<% @articles.each do |article| %>
 	<div class="row d-flex justify-content-center">
 		<div class="col-md-6  my-2 card mr-4">
+			<%= link_to article_path(article) do %>
 				<%= image_tag article.image_url , height: '600', width: '600', class: "card-img-top mt-3" %>
+			<% end %>
 			<div class="d-flex justify-content-between my-3 mx-2">
 				<% if logged_in? %>
 					<div id="like-icon-article-<%= article.id.to_s %>" >
@@ -23,8 +25,14 @@
 			<% end %>
 			</div>
 			<div class="card-body">
-				<p class="my-4 card-title d-flex justify-content-between"><strong> <%= link_to  article_path(article) ,class: "show-article btn-group" do %> <%= article.title %> <% end %> </strong> <span class="badge badge-pill badge-primary text-white">	<%= article.category.name %> </span> </p> 
-				<p  class=" text-muted card-text"><%= article.description %> </p>
+				<p class="my-4 card-title d-flex justify-content-between"><strong> <%= link_to  article_path(article) ,class: "show-article btn-group" do %> 
+					<%= article.title %> 
+				<% end %> </strong> 
+				<span class="badge badge-pill badge-primary text-white">
+					<%= article.category.name %> </span> </p> 
+				<%= link_to article_path(article), class: "link_to" do %>
+					<p  class=" text-muted card-text text-description link_to card-text btn-group"><%= truncate(article.description, length:50) %> </p>
+				<% end %>
 			</div>
 		</div>
 	</div>
@@ -38,7 +46,7 @@
 		  <div class="modal-dialog modal-dialog-centered" role="document">
 		    <div class="modal-content">
 		      <div class="modal-header">
-		        <h5 class="modal-title" id="exampleModalLongTitle"> <%= article.title %>  </h5>
+		        <h5 class="modal-title" id="exampleModalLongTitle"> <h2> Go ahead !!! </h2>  </h5>
 		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 		          <span aria-hidden="true">&times;</span>
 		        </button>

@@ -5,8 +5,8 @@ class Article < ApplicationRecord
 	  validates :description, presence: true
 	  belongs_to :category
 	  belongs_to :user
-	  has_many :likes
-	  has_many :comments
+	  has_many :likes, dependent: :destroy
+	  has_many :comments,dependent: :destroy
 
 	  def is_liked(user)
 	  	Like.where(user_id: user.id, article_id: id)
