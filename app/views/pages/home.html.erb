@@ -1,2 +1,23 @@
-<h1>Page#home</h1>
-<p>Find me in app/views/page/home.html.erb</p>
+	<div class="alert alert-success text-center my-3 d-flex align-items-center justify-content-between" role="alert">
+		<i class="fa fa-check-square fa-3x" aria-hidden="true"></i>
+		<h3>Welcome to this amazing website. </h3>
+	</div>
+	<div class="alert alert-success text-center my-3 d-flex align-items-center justify-content-between" role="alert">
+		<i class="fa fa-check-square fa-3x" aria-hidden="true"></i>
+		<h3>Create an amazing articles with pictures. </h3>
+	</div>
+	<div class="alert alert-success text-center my-3 d-flex align-items-center justify-content-between" role="alert">
+		<i class="fa fa-check-square fa-3x" aria-hidden="true"></i>
+		<h3>Like other post and also comment on other post.  </h3>
+	</div>
+	<% if !logged_in? %>
+		<div class="alert alert-success text-center my-3 d-flex align-items-center justify-content-between" role="alert">
+			<i class="fa fa-check-square fa-3x" aria-hidden="true"></i>
+			<h3>So why wait!! hit the  Sign up button.</h3>
+		</div>
+	<% else %>
+		<div class="alert alert-success text-center my-3 d-flex align-items-center justify-content-between" role="alert">
+			<i class="fa fa-check-square fa-3x" aria-hidden="true"></i>
+			<h3>Go and create your articles!!! </h3>
+		</div>
+	<% end %>	
